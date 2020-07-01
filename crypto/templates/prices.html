@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% if crypto.Response %}
+    <div class="alert alert-danger" role="alert">
+        Invalid bitcoin name....
+    </div>
+{% else %}
+<div class="jumbotron">
+  <h1 class="display-4">{{param}}</h1>
+  <p class="lead">Bitcoin prices for different currencies</p>
+</div>
+<br/>
+<div class="container">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Currencies</th>
+      <th scope="col">Prices</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for key,val in crypto.items%}
+    <tr>
+      <td>{{key}}</td>
+      <td>{{val}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endif %}
+{% endblock %}
